@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserItem from './UserItem';
 
 class Users extends Component {
   state = {
@@ -26,13 +27,24 @@ class Users extends Component {
 
   render() {
     return (
-      <div>
+      <div style={userStyle}>
         {this.state.users.map(user => {
-          return <div key={user.id}>{user.login}</div>;
+          return (
+            <div key={user.id}>
+              <UserItem user={user} />
+            </div>
+          );
         })}
       </div>
     );
   }
 }
+
+// Define Grid Layout via Inline Styles
+const userStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridColumnGap: '1rem'
+};
 
 export default Users;
