@@ -1,34 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserItem from './UserItem';
+import Spinner from '../layout/Spinner';
 
-class Users extends Component {
-  state = {
-    users: [
-      {
-        id: '1',
-        login: 'mojombo',
-        avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4',
-        html_url: 'https://api.github.com/users/mojombo'
-      },
-      {
-        id: '2',
-        login: 'defunkt',
-        avatar_url: 'https://avatars0.githubusercontent.com/u/2?v=4',
-        html_url: 'https://github.com/defunkt'
-      },
-      {
-        id: '3',
-        login: 'pjhyett',
-        avatar_url: 'https://avatars0.githubusercontent.com/u/3?v=4',
-        html_url: 'https://github.com/pjhyett'
-      }
-    ]
-  };
-
-  render() {
+const Users = ({ users, loading }) => {
+  if (loading) {
+    return <Spinner />;
+  } else {
     return (
       <div style={userStyle}>
-        {this.state.users.map(user => {
+        {users.map(user => {
           return (
             <div key={user.id}>
               <UserItem user={user} />
@@ -38,7 +18,7 @@ class Users extends Component {
       </div>
     );
   }
-}
+};
 
 // Define Grid Layout via Inline Styles
 const userStyle = {
