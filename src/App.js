@@ -11,6 +11,10 @@ class App extends Component {
     loading: false
   };
 
+  searchUsers = text => {
+    console.log(text);
+  };
+
   async componentDidMount() {
     this.setState({ loading: true });
 
@@ -28,7 +32,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <div className="container">
-          <Search />
+          <Search searchUsers={this.searchUsers} />
           <Users users={this.state.users} loading={this.state.loading} />
         </div>
       </div>

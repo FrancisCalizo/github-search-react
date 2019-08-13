@@ -8,7 +8,8 @@ export class Search extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   onSubmit = e => {
-    console.log(this.state.text);
+    this.props.searchUsers(this.state.text);
+    this.setState({ text: '' });
 
     e.preventDefault();
   };
@@ -22,6 +23,7 @@ export class Search extends Component {
             name="text"
             placeholder="Search Users..."
             onChange={this.onChange}
+            value={this.state.text}
           />
           <input
             type="submit"
