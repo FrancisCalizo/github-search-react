@@ -3,12 +3,14 @@ import axios from 'axios';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
+import Alert from './components/layout/Alert';
 import './App.css';
 
 class App extends Component {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   };
 
   // Initial Page Load Uswers
@@ -42,16 +44,31 @@ class App extends Component {
     this.setState({ users: [], loading: false });
   };
 
+  // Set Empty Input Alert
+  setAlert = (msg, type) => {
+    this.setState({
+      alert: {
+        msg: msg,
+        type: type
+      }
+    });
+
+    setTimeout(() => this.setState({ alert: null }), 4000);
+  };
+
   render() {
     const { users, loading } = this.state;
+
     return (
       <div className="App">
         <Navbar />
         <div className="container">
+          <Alert alert={this.state.alert} />
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
             users={users}
+            setAlert={this.setAlert}
           />
           <Users users={users} loading={loading} />
         </div>
