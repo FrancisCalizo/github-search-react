@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UserItem = ({ user: { login, avatar_url, html_url } }) => {
+const UserItem = ({ user: { login, avatar_url, html_url }, getUser }) => {
   // Destructuring here is same as above
   // const { login, avatar_url, html_url } = props.user;
 
