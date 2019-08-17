@@ -17,7 +17,7 @@ class App extends Component {
     alert: null
   };
 
-  // Initial Page Load Uswers
+  // Initial Page Load Users
   async componentDidMount() {
     this.setState({ loading: true });
 
@@ -101,7 +101,7 @@ class App extends Component {
               <Route exact path="/about" component={About} />
               <Route
                 exact
-                path="/users/:login"
+                path="/user/:login"
                 render={props => (
                   <User
                     {...props}
