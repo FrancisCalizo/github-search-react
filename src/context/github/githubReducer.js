@@ -3,12 +3,19 @@ import {
   SET_LOADING,
   CLEAR_USERS,
   GET_USERS,
-  GET_REPOS
+  GET_REPOS,
+  INITIAL_LOAD
 } from '../types';
 
 // Way to export an anonymous function
 export default (state, action) => {
   switch (action.type) {
+    case INITIAL_LOAD:
+      return {
+        ...state,
+        users: action.payload,
+        loading: false
+      };
     case SEARCH_USERS:
       return {
         ...state,

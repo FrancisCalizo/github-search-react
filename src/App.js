@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './components/layout/Navbar';
@@ -18,22 +18,6 @@ const App = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
-
-  // Initial Page Load Users
-  useEffect(() => {
-    // Immediately Invoked Function
-    // eslint-disable-next-line no-unused-vars
-    const fetchData = (async () => {
-      setLoading(true);
-
-      const res = await axios.get(
-        `https://api.github.com/users?client_id${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-      );
-
-      setUsers(res.data);
-      setLoading(false);
-    })();
-  }, []);
 
   // Get Single GitHub User
   const getUser = async username => {
