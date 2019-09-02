@@ -4,7 +4,8 @@ import {
   CLEAR_USERS,
   GET_USERS,
   GET_REPOS,
-  INITIAL_LOAD
+  INITIAL_LOAD,
+  GET_USER
 } from '../types';
 
 // Way to export an anonymous function
@@ -20,6 +21,12 @@ export default (state, action) => {
       return {
         ...state,
         users: action.payload,
+        loading: false
+      };
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload,
         loading: false
       };
     case SET_LOADING:
