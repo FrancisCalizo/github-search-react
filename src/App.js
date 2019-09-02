@@ -43,12 +43,6 @@ const App = () => {
     setLoading(false);
   };
 
-  // Clear GitHub Users from State
-  const clearUsers = () => {
-    setUsers([]);
-    setLoading(false);
-  };
-
   // Set Empty Input Alert
   const showAlert = (msg, type) => {
     setAlert({ msg, type });
@@ -69,12 +63,8 @@ const App = () => {
                 path="/"
                 render={props => (
                   <Fragment>
-                    <Search
-                      clearUsers={clearUsers}
-                      users={users}
-                      setAlert={showAlert}
-                    />
-                    <Users/>
+                    <Search users={users} setAlert={showAlert} />
+                    <Users />
                   </Fragment>
                 )}
               />
