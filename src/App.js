@@ -74,7 +74,7 @@ const App = () => {
                       users={users}
                       setAlert={showAlert}
                     />
-                    <Users users={users} loading={loading} />
+                    <Users/>
                   </Fragment>
                 )}
               />
